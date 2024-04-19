@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>상품 상세 페이지</h2>
+    <p>제목: {{ Product.title }}</p>
+    <p>작성자: {{ Product.author.username }}</p>
+
+    {% if Product.image %}
+        <img src="{{ Product.image.url }}">
+    {% endif %}
+
+    <p>내용: {{Product.content }}</p>
+    <p>작성일시: {{ Product.created_at }}</p>
+    <p>수정일시: {{Product.updated_at }}</p>
+
+    <a href="{% url 'products:products' %}">목록보기</a>
+
+
+    {% if user == Product.author %}
+    <a href="{% url 'products:update' Product.pk %}">
+        <button>수정하기</button>
+    </a>
+
+    <form action="{% url 'products:delete' Product.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="삭제">
+    </form>
+{% endif %}
+
+
+
+{% endblock content %}
+
+
+

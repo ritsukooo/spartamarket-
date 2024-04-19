@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<img src="{% static "products\스파르타마켓 베너.jpg" %}">
+
+
+<h1>어서오세요! <br> '스파르타_마켓'입니다 </h1>
+
+<a href="{% url 'accounts:signup' %}">회원가입</a>
+
+<a href="{% url 'accounts:login' %}">로그인</a>
+
+<a href="{% url 'products:products' %}">물건 목록 보기</a>
+
+<a href="{% url 'products:create' %}">상품 등록하기</a>
+
+<a href="">내 프로필</a>
+
+
+{% endblock content %}
