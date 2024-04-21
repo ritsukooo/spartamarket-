@@ -36,6 +36,8 @@ def create(request):
     return render(request, "products/create.html", context)
 
 
+
+
 # 상품 상세 정보 ------------------------------------------------------------------------------
 
 def products_detail(request, pk):
@@ -96,5 +98,3 @@ def like(request, pk):
             Product.like_users.add(request.user)  # 좋아요
         return redirect("products:products")
     return redirect("accounts:login")
-
-

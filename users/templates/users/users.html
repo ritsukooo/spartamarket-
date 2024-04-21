@@ -1,0 +1,21 @@
+{% comment %} {% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1> 내 프로필 </h1>
+
+<a href="{% url 'accounts:login' %}">로그인</a>
+
+<a href="{% url 'products:products' %}">물건 목록 보기</a>
+
+
+
+{% if member %} 
+    <a href="{% url 'users:profile' member.username %}">내 프로필</a>
+{% else %
+    <p>유저 이름이 존재하지 않습니다.</p>
+{% endif %} 
+
+
+
+{% endblock content %}  {% endcomment %}

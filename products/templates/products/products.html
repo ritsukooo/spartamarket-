@@ -14,9 +14,23 @@
 <hr>
 
 {% for Product in Products %}
-    <a href="{% url "products:products_detail" Product.pk %}">
-        <p>[ {{ Product.pk }} ] {{ Product.title }}</p>
-    </a>
+    
+<div class="card" style="width: 18rem;">
+    <img src="{{Product.image.url}}" class="card-img-top" >
+    <div class="card-body">
+      <h5 class="card-title">{{ Product.title }}<</h5>
+      <p class="card-text">
+        
+        <a href="{% url 'users:profile' username=Product.author.username %}">
+            <button>작성자: {{ Product.author }}</button>
+        </a>
+        
+       <br> 
+       {{ Product.content }}</p>
+      <a href="{% url "products:products_detail" Product.pk %}" class="btn btn-primary">자세히 보기</a>
+    </div>
+  </div>
+
 
 <form action="{% url 'products:like' Product.pk %}" method="POST">
     {% csrf_token %}
@@ -28,6 +42,8 @@
 </form> 
 
 {% endfor %}
+
+
 
 
 {% endblock content %}

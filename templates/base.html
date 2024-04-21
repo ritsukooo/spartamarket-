@@ -12,11 +12,12 @@
     {% block head %}{% endblock head %}
 </head>
 <body>
-
     <div class="navbar">
 
         {% if request.user.is_authenticated %}
-            <h3>Hello, {{ request.user.username }}</h3>
+            <h3>Hello, {{ request.user.username }}</h3><br><br>
+
+          
             <form action="{% url 'accounts:logout' %}" method="POST">
                 {% csrf_token %}
                 <input type="submit" value="로그아웃"></input>
@@ -33,7 +34,14 @@
             <a href="{% url "accounts:signup" %}">회원가입</a>
         {% endif %}
 
+<a href="{% url 'products:products' %}">물건 목록 보기</a>
+<a href="{% url 'index' %}">홈</a>
     </div>
+
+
+</div>
+
+
 
     <div class="container">
         {% block content %}
